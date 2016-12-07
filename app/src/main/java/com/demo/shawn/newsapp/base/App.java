@@ -2,15 +2,26 @@ package com.demo.shawn.newsapp.base;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.v7.app.AppCompatDelegate;
 
 import com.demo.shawn.newsapp.BuildConfig;
+import com.demo.shawn.newsapp.common.Constants;
+import com.demo.shawn.newsapp.dao.DaoMaster;
+import com.demo.shawn.newsapp.dao.DaoSession;
+import com.demo.shawn.newsapp.dao.GreenDbHelper;
+import com.demo.shawn.newsapp.di.component.ApplicationComponent;
+import com.demo.shawn.newsapp.di.component.DaggerApplicationComponent;
+import com.demo.shawn.newsapp.di.module.ApplicationModule;
+import com.demo.shawn.newsapp.utils.PreferencesUitls;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+
+import org.greenrobot.greendao.query.QueryBuilder;
 
 /**
  * Created by hxy on 2016/12/6 0006.
@@ -19,12 +30,25 @@ import com.squareup.leakcanary.RefWatcher;
  */
 
 public class App extends Application {
-    private static Context sAppContext;
+    private static App sAppContext;
     private RefWatcher refWatcher;
+    private DaoSession daoSession;
+    private ApplicationComponent mApplicationComponent;
 
-    public static RefWatcher getRefWatcher(Context context) {
-        App appliction = (App) context.getApplicationContext();
-        return appliction.refWatcher;
+    public static RefWatcher getRefWatcher() {
+        return sAppContext.refWatcher;
+    }
+
+    public static App getAppContext() {
+        return sAppContext;
+    }
+
+    public static ApplicationComponent getApplicationComponent() {
+        return sAppContext.mApplicationComponent;
+    }
+
+    public static DaoSession getDaoSession() {
+        return sAppContext.daoSession;
     }
 
     @Override
@@ -35,10 +59,32 @@ public class App extends Application {
         initLeakCanary();
         initActivityLifecycleLogs();
         initStrictMode();
+        initDayNightMode();
+        initDataBase();
+        initApplicationComponent();
     }
 
+    //------------------------private method-------------------------------------
+    private void initApplicationComponent() {
+        mApplicationComponent = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
+    }
+
+    //开发环境采用严格模式
     private void initStrictMode() {
-//        StrictMode
+        if (BuildConfig.DEBUG) {
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                    .detectDiskReads()
+                    .detectDiskWrites()
+                    .detectNetwork()
+                    .penaltyLog()
+                    .build());
+
+            StrictMode.setVmPolicy(
+                    new StrictMode.VmPolicy.Builder()
+                            .detectAll()
+                            .penaltyLog()
+                            .build());
+        }
     }
 
     //初始化log配置
@@ -100,5 +146,24 @@ public class App extends Application {
         } else {
             refWatcher = RefWatcher.DISABLED;
         }
+    }
+
+    //配置夜间模式或是白天模式
+    private void initDayNightMode() {
+        if (PreferencesUitls.isNightMode()) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
+
+    private void initDataBase() {
+        QueryBuilder.LOG_SQL = BuildConfig.DEBUG;
+        QueryBuilder.LOG_VALUES = BuildConfig.DEBUG;
+//        默认的实例是DevOpenHelper  但是DaoMaster.DevOpenHelper 会在数据库升级时，删除所有的表，意味着这将导致数据的丢失。
+        GreenDbHelper helper = new GreenDbHelper(this, Constants.DB_NAME, null);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        DaoMaster daoMaster = new DaoMaster(db);
+        daoSession = daoMaster.newSession();
     }
 }

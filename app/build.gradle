@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 25
@@ -24,17 +25,67 @@ android {
     }
 }
 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
+    }
+}
+greendao {
+    //数据库schema版本，也可以理解为数据库版本号
+    schemaVersion 1
+    //设置DaoMaster 、DaoSession、Dao包名
+    daoPackage 'com.demo.shawn.newsapp.dao'
+    //设置DaoMaster 、DaoSession、Dao目录
+    targetGenDir 'src/main/java'
+    //设置生成单元测试目录
+//    targetGenDirTest
+    //设置自动生成单元测试用例
+//    generateTests
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    //v7主题  23以上支持夜间模式
     compile 'com.android.support:appcompat-v7:25.0.1'
-    testCompile 'junit:junit:4.12'
+
     //leakcanary
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
     //logcat工具
     compile 'com.orhanobut:logger:1.15'
+
+    //单元测试
+    testCompile 'junit:junit:4.12'
+
+    //greendao
+    compile 'org.greenrobot:greendao:3.2.0'
+
+    //dagger2.0
+    compile 'com.google.dagger:dagger:2.8'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+
+    //butterknife
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    //材料设计
+    compile 'com.dmitrymalkovich.android:material-design-dimens:1.2'
+
+    //首页动画
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.daimajia.easing:library:1.0.1@aar'
+    compile 'com.daimajia.androidanimations:library:1.1.3@aar'
+
+    //rxjava
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.2.3'
 }

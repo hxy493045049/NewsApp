@@ -3,12 +3,16 @@
     package="com.demo.shawn.newsapp">
 
     <application
+        android:name=".base.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:fullBackupContent="true"
+        android:theme="@style/BaseAppTheme">
+        <activity android:name=".ui.activities.SplashActivity"
+            android:excludeFromRecents="false"
+            android:theme="@style/BaseAppTheme.Trans">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
