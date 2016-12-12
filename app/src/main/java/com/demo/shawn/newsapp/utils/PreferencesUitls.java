@@ -20,4 +20,13 @@ public class PreferencesUitls {
                 Constants.SHARES_COLOURFUL_NEWS, Activity.MODE_PRIVATE);
         return preferences.getBoolean(Constants.NIGHT_THEME_MODE, false);
     }
+
+    public static void saveCurrentDayNightMode(boolean isNight){
+        SharedPreferences preferences = App.getAppContext().getSharedPreferences(
+                Constants.SHARES_COLOURFUL_NEWS, Activity.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(Constants.NIGHT_THEME_MODE, isNight);
+        editor.apply();
+    }
 }

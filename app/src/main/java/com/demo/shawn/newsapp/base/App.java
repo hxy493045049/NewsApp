@@ -47,6 +47,10 @@ public class App extends Application {
         return sAppContext.mApplicationComponent;
     }
 
+    public static String getResourceString(int stringId){
+        return sAppContext.getResources().getString(stringId);
+    }
+
     public static DaoSession getDaoSession() {
         return sAppContext.daoSession;
     }

@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">NewsApp</string>
+
+
+    <!--异常字符串-->
+    <string name="net_error">网络异常,请检查网络设置</string>
+    <!--accessibility hint  无障碍提示-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
 </resources>

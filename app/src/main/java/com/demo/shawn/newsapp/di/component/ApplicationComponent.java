@@ -1,7 +1,9 @@
 package com.demo.shawn.newsapp.di.component;
 
-import com.demo.shawn.newsapp.base.App;
+import android.content.Context;
+
 import com.demo.shawn.newsapp.di.module.ApplicationModule;
+import com.demo.shawn.newsapp.di.qualifier.ContextLife;
 import com.demo.shawn.newsapp.di.scope.PerApp;
 
 import dagger.Component;
@@ -14,5 +16,6 @@ import dagger.Component;
 @PerApp
 @Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {
-    App getApplication();
+    @ContextLife("Application")
+    Context getApplication();
 }

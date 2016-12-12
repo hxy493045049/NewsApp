@@ -1,5 +1,7 @@
 package com.demo.shawn.newsapp.di.module;
 
+import android.content.Context;
+
 import com.demo.shawn.newsapp.base.App;
 import com.demo.shawn.newsapp.di.qualifier.ContextLife;
 import com.demo.shawn.newsapp.di.scope.PerApp;
@@ -14,15 +16,17 @@ import dagger.Provides;
  */
 @Module
 public class ApplicationModule {
-    private App mApplicationContext;
+
+    private Context mApplicationContext;
 
     public ApplicationModule(App context) {
-        mApplicationContext = context;
+        mApplicationContext = context.getApplicationContext();
     }
 
     @Provides
     @PerApp
-    App provideApplicationContext() {
+    @ContextLife
+    Context provideApplicationContext() {
         return mApplicationContext;
     }
 
