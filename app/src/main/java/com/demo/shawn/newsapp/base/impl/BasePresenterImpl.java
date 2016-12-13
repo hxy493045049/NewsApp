@@ -3,7 +3,7 @@ package com.demo.shawn.newsapp.base.impl;
 import android.support.annotation.NonNull;
 
 import com.demo.shawn.newsapp.base.BaseContract;
-import com.demo.shawn.newsapp.listener.RequestCallBack;
+import com.demo.shawn.newsapp.data.RequestCallBack;
 import com.demo.shawn.newsapp.utils.MyUtils;
 
 import rx.Subscription;

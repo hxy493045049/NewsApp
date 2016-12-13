@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package com.demo.shawn.newsapp.listener;
+package com.demo.shawn.newsapp.data;
 
 /**
  * @author 咖枯

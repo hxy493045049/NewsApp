@@ -9,8 +9,8 @@ import android.support.v7.app.AppCompatDelegate;
 
 import com.demo.shawn.newsapp.BuildConfig;
 import com.demo.shawn.newsapp.common.Constants;
-import com.demo.shawn.newsapp.dao.DaoMaster;
-import com.demo.shawn.newsapp.dao.DaoSession;
+import com.demo.shawn.newsapp.data.db.DaoMaster;
+import com.demo.shawn.newsapp.data.db.DaoSession;
 import com.demo.shawn.newsapp.data.db.GreenDbHelper;
 import com.demo.shawn.newsapp.di.component.ApplicationComponent;
 import com.demo.shawn.newsapp.di.component.DaggerApplicationComponent;
@@ -47,7 +47,7 @@ public class App extends Application {
         return sAppContext.mApplicationComponent;
     }
 
-    public static String getResourceString(int stringId){
+    public static String getResourceString(int stringId) {
         return sAppContext.getResources().getString(stringId);
     }
 
@@ -70,7 +70,8 @@ public class App extends Application {
 
     //------------------------private method-------------------------------------
     private void initApplicationComponent() {
-        mApplicationComponent = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
+        mApplicationComponent = DaggerApplicationComponent.builder().applicationModule(new
+                ApplicationModule(this)).build();
     }
 
     //开发环境采用严格模式

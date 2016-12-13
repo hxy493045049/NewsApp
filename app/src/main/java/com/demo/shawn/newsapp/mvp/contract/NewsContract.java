@@ -1,7 +1,7 @@
 package com.demo.shawn.newsapp.mvp.contract;
 
-import com.demo.shawn.newsapp.base.BasePresenter;
-import com.demo.shawn.newsapp.base.BaseView;
+
+import com.demo.shawn.newsapp.base.BaseContract;
 
 /**
  * Created by hxy on 2016/12/12 0012.
@@ -9,11 +9,11 @@ import com.demo.shawn.newsapp.base.BaseView;
  * description :
  */
 public interface NewsContract {
-    interface View extends BaseView{
+    interface View extends BaseContract.View {
 
     }
 
-    interface Presenter extends BasePresenter{
+    interface Presenter extends BaseContract.Presenter {
         void onChannelDbChanged();
     }
 }

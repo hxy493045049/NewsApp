@@ -48,6 +48,7 @@ public abstract class BaseActivity<T extends BaseContract.Presenter> extends App
     protected ActivityComponent mActivityComponent;
     protected T mPresenter;
     protected Subscription mSubscription;
+    protected String TAG = BaseActivity.class.getSimpleName();
     private boolean mIsHasNavigationView;
     private boolean mIsAddedView;//表示是否已经添加过夜间蒙版,蒙版为了防止recreate时的闪屏
     private View mNightView;//夜间模式和白天模式切换的添加的蒙版
@@ -66,6 +67,7 @@ public abstract class BaseActivity<T extends BaseContract.Presenter> extends App
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TAG = this.getClass().getSimpleName();
         initAnnotation();
         NetUtils.isNetworkErrorThenShowMsg();
         initActivityComponent();
