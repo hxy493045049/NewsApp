@@ -44,7 +44,7 @@ import rx.Subscription;
  * description :
  */
 
-public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity {
+public abstract class BaseActivity<T extends BaseContract.Presenter> extends AppCompatActivity {
     protected ActivityComponent mActivityComponent;
     protected T mPresenter;
     protected Subscription mSubscription;

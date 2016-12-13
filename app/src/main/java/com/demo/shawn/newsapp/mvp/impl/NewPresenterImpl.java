@@ -2,6 +2,7 @@ package com.demo.shawn.newsapp.mvp.impl;
 
 import android.support.annotation.NonNull;
 
+import com.demo.shawn.newsapp.base.impl.BasePresenterImpl;
 import com.demo.shawn.newsapp.base.BaseView;
 import com.demo.shawn.newsapp.mvp.contract.NewsContract;
 
@@ -11,7 +12,7 @@ import com.demo.shawn.newsapp.mvp.contract.NewsContract;
  * description :
  */
 
-public class NewPresenterImpl implements NewsContract.Presenter {
+public class NewPresenterImpl extends BasePresenterImpl implements NewsContract.Presenter  {
     @Override
     public void onChannelDbChanged() {
 

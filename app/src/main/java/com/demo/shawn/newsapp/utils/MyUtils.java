@@ -8,6 +8,8 @@ import android.view.inputmethod.InputMethodManager;
 
 import java.lang.reflect.Field;
 
+import rx.Subscription;
+
 /**
  * Created by hxy on 2016/12/9 0009.
  * <p>
@@ -18,6 +20,12 @@ public class MyUtils {
 
     public static View getRootView(Activity context) {
         return ((ViewGroup) context.findViewById(android.R.id.content)).getChildAt(0);
+    }
+
+    public static void cancelSubscription(Subscription subscription) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
     }
 
     /**

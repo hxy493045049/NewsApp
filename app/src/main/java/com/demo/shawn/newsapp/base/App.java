@@ -11,7 +11,7 @@ import com.demo.shawn.newsapp.BuildConfig;
 import com.demo.shawn.newsapp.common.Constants;
 import com.demo.shawn.newsapp.dao.DaoMaster;
 import com.demo.shawn.newsapp.dao.DaoSession;
-import com.demo.shawn.newsapp.dao.GreenDbHelper;
+import com.demo.shawn.newsapp.data.db.GreenDbHelper;
 import com.demo.shawn.newsapp.di.component.ApplicationComponent;
 import com.demo.shawn.newsapp.di.component.DaggerApplicationComponent;
 import com.demo.shawn.newsapp.di.module.ApplicationModule;

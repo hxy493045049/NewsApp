@@ -1,4 +1,4 @@
-package com.demo.shawn.newsapp.bean;
+package com.demo.shawn.newsapp.data.bean;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;

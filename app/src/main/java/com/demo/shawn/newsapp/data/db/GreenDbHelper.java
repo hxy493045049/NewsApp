@@ -1,8 +1,7 @@
-package com.demo.shawn.newsapp.dao;
+package com.demo.shawn.newsapp.data.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.text.style.UpdateAppearance;
 
 /**
  * Created by hxy on 2016/12/6 0006.
