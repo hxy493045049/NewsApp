@@ -1,4 +1,4 @@
-package com.demo.shawn.newsapp.mvp.ui.activities;
+package com.demo.shawn.newsapp.module.ui.activities;
 
 import android.animation.ValueAnimator;
 import android.os.Bundle;

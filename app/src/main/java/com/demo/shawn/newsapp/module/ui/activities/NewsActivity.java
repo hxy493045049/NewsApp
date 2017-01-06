@@ -1,4 +1,4 @@
-package com.demo.shawn.newsapp.mvp.ui.activities;
+package com.demo.shawn.newsapp.module.ui.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

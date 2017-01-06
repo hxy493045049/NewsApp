@@ -1,11 +1,11 @@
-package com.demo.shawn.newsapp.mvp.contract.impl;
+package com.demo.shawn.newsapp.module.contract.impl;
 
 import android.support.annotation.NonNull;
 
 import com.demo.shawn.newsapp.base.BaseContract;
 import com.demo.shawn.newsapp.base.impl.BasePresenterImpl;
 import com.demo.shawn.newsapp.data.bean.NewsChannel;
-import com.demo.shawn.newsapp.mvp.contract.NewsContract;
+import com.demo.shawn.newsapp.module.contract.NewsContract;
 
 import java.util.List;
 
@@ -24,16 +24,19 @@ public class NewPresenterImpl extends BasePresenterImpl<NewsContract.View, List<
 
     @Override
     public void onCreate() {
-
+        super.onCreate();
+        loadNewsChannels();
     }
 
     @Override
     public void attachView(@NonNull BaseContract.View view) {
-
     }
 
     @Override
     public void onDestroy() {
+    }
+
+    private void loadNewsChannels() {
 
     }
 }

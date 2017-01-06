@@ -1,4 +1,4 @@
-package com.demo.shawn.newsapp.mvp.contract;
+package com.demo.shawn.newsapp.module.contract;
 
 
 import com.demo.shawn.newsapp.base.BaseContract;

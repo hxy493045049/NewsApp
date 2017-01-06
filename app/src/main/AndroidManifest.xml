@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:fullBackupContent="true"
         android:theme="@style/BaseAppTheme">
-        <activity android:name=".mvp.ui.activities.SplashActivity"
+        <activity android:name=".module.ui.activities.SplashActivity"
             android:excludeFromRecents="false"
             android:theme="@style/BaseAppTheme.Trans">
             <intent-filter>

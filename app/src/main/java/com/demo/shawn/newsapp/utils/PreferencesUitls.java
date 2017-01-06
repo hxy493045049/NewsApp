@@ -2,6 +2,7 @@ package com.demo.shawn.newsapp.utils;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.demo.shawn.newsapp.base.App;
 import com.demo.shawn.newsapp.common.Constants;
@@ -21,12 +22,24 @@ public class PreferencesUitls {
         return preferences.getBoolean(Constants.NIGHT_THEME_MODE, false);
     }
 
-    public static void saveCurrentDayNightMode(boolean isNight){
+    public static void saveCurrentDayNightMode(boolean isNight) {
         SharedPreferences preferences = App.getAppContext().getSharedPreferences(
                 Constants.SHARES_COLOURFUL_NEWS, Activity.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(Constants.NIGHT_THEME_MODE, isNight);
         editor.apply();
+    }
+
+    public static boolean hasInitChannels() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(App
+                .getAppContext());
+        return preferences.getBoolean(Constants.HAS_INIT_CHANNELS, false);
+    }
+
+    public static void setInitChannelsFlag() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(App
+                .getAppContext());
+        preferences.edit().putBoolean(Constants.HAS_INIT_CHANNELS, true).apply();
     }
 }
