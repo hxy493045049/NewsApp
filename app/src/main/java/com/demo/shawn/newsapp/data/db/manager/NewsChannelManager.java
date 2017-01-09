@@ -22,8 +22,6 @@ public class NewsChannelManager {
             List<String> channelName = Arrays.asList(App.getAppContext().getResources()
                     .getStringArray(R.array.news_channel_name));
 
-
-
         }
     }
 }
