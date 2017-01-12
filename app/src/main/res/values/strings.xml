@@ -8,4 +8,12 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="db_error">数据库出错了</string>
+    <!--menu-->
+    <string name="news">新闻</string>
+    <string name="zhihu">知乎</string>
+    <string name="photo">图片</string>
+    <string name="video">视频</string>
+    <string name="tools">设置</string>
+    <string name="night_mode">夜间模式</string>
 </resources>

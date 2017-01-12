@@ -1,6 +1,7 @@
 package com.demo.shawn.newsapp.module.ui.activities;
 
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.animation.Animation;
@@ -81,7 +82,7 @@ public class SplashActivity extends AppCompatActivity {
                 .subscribe(new Action1<Long>() {
                     @Override
                     public void call(Long aLong) {
-//                        startActivity(new Intent(SplashActivity.this, NewsActivity.class));
+                        startActivity(new Intent(SplashActivity.this, NewsActivity.class));
                         overridePendingTransition(0, android.R.anim.fade_out);
                         finish();
                     }

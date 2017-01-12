@@ -7,6 +7,7 @@ import com.demo.shawn.newsapp.base.App;
 import com.demo.shawn.newsapp.di.module.ActivityModule;
 import com.demo.shawn.newsapp.di.qualifier.ContextLife;
 import com.demo.shawn.newsapp.di.scope.PerActivity;
+import com.demo.shawn.newsapp.module.ui.activities.NewsActivity;
 
 import dagger.Component;
 
@@ -26,4 +27,6 @@ public interface ActivityComponent {
     Context getApplicationContext();
 
     Activity getActivity();
+
+    void inject(NewsActivity newsActivity);
 }

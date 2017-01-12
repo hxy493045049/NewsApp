@@ -1,11 +1,10 @@
 package com.demo.shawn.newsapp.module.contract.impl.presenter;
 
-import android.support.annotation.NonNull;
-
-import com.demo.shawn.newsapp.base.BaseContract;
 import com.demo.shawn.newsapp.base.impl.BasePresenterImpl;
 import com.demo.shawn.newsapp.data.bean.NewsChannel;
+import com.demo.shawn.newsapp.data.interactor.NewsInteractor;
 import com.demo.shawn.newsapp.module.contract.NewsContract;
+import com.demo.shawn.newsapp.module.contract.impl.view.NewsView;
 
 import java.util.List;
 
@@ -17,27 +16,23 @@ import javax.inject.Inject;
  * description :
  */
 
-public class NewPresenterImpl extends BasePresenterImpl<NewsContract.View, List<NewsChannel>>
+public class NewPresenterImpl extends BasePresenterImpl<NewsView, List<NewsChannel>>
         implements NewsContract.Presenter {
+
+    private NewsInteractor<List<NewsChannel>> mNewsInteractor;
+
     @Inject
-    public NewPresenterImpl() {
+    public NewPresenterImpl(NewsInteractor<List<NewsChannel>> newsInteractor) {
+        mNewsInteractor = newsInteractor;
     }
 
     @Override
     public void onCreate() {
-        super.onCreate();
         loadNewsChannels();
     }
 
-    @Override
-    public void attachView(@NonNull BaseContract.View view) {
-    }
-
-    @Override
-    public void onDestroy() {
-    }
-
     private void loadNewsChannels() {
+        mSubscription = mNewsInteractor.loadNewsChannels(this);
     }
 
     @Override
