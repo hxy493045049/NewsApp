@@ -16,9 +16,10 @@
  */
 package com.demo.shawn.newsapp.data.network;
 
-import com.kaku.colorfulnews.mvp.entity.GirlData;
-import com.kaku.colorfulnews.mvp.entity.NewsDetail;
-import com.kaku.colorfulnews.mvp.entity.NewsSummary;
+
+import com.demo.shawn.newsapp.data.bean.GirlData;
+import com.demo.shawn.newsapp.data.bean.NewsDetail;
+import com.demo.shawn.newsapp.data.bean.NewsSummary;
 
 import java.util.List;
 import java.util.Map;

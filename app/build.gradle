@@ -82,4 +82,6 @@ dependencies {
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     //material desion 控件  如navigationview
     compile 'com.android.support:design:25.0.1'
+    //retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
 }

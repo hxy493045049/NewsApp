@@ -19,14 +19,6 @@ package com.demo.shawn.newsapp.data.network;
 import android.support.annotation.NonNull;
 import android.util.SparseArray;
 
-import com.kaku.colorfulnews.App;
-import com.kaku.colorfulnews.common.ApiConstants;
-import com.kaku.colorfulnews.common.HostType;
-import com.kaku.colorfulnews.mvp.entity.GirlData;
-import com.kaku.colorfulnews.mvp.entity.NewsDetail;
-import com.kaku.colorfulnews.mvp.entity.NewsSummary;
-import com.kaku.colorfulnews.utils.NetUtil;
-import com.socks.library.KLog;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,8 +35,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 
 /**
